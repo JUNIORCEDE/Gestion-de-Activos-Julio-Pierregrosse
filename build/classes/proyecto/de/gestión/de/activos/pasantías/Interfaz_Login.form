@@ -73,7 +73,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
-                                      <Component id="rSButton1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Login" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="208" max="32767" attributes="0"/>
@@ -82,7 +82,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="IconLogin" min="-2" pref="107" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
-                              <Component id="rSButton2" min="-2" pref="48" max="-2" attributes="0"/>
+                              <Component id="Close" min="-2" pref="48" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -99,7 +99,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="rSButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="Close" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="87" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -114,19 +114,19 @@
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="rSButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="Login" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="rojeru_san.RSButton" name="rSButton1">
+            <Component class="rojeru_san.RSButton" name="Login">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Iniciar Sesion"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rSButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginActionPerformed"/>
               </Events>
             </Component>
             <Component class="rojeru_san.RSMTextFull" name="txtUser">
@@ -151,7 +151,7 @@
                 <Property name="text" type="java.lang.String" value="Iniciar Sesion"/>
               </Properties>
             </Component>
-            <Component class="rojeru_san.RSButton" name="rSButton2">
+            <Component class="rojeru_san.RSButton" name="Close">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="d5" type="rgb"/>
@@ -162,7 +162,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rSButton2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CloseActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="IconLogin">

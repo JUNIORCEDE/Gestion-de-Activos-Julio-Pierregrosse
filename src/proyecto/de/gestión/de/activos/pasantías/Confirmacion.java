@@ -22,7 +22,8 @@ import javax.swing.SwingUtilities;
 public class Confirmacion extends javax.swing.JFrame {
     public JLabel textMsg;
     public Class clase;
-    public String method; 
+    public String method;
+    public java.awt.event.ActionEvent Evento;
     /**
      * Creates new form Confirmación
      */
@@ -156,8 +157,8 @@ public class Confirmacion extends javax.swing.JFrame {
     private void CloseConfirm(Boolean confirm){
         try {
             Object c = clase.newInstance();
-            Method ConfirmAction = clase.getMethod("ConfirmAction",String.class,Boolean.class);
-            ConfirmAction.invoke(c,method,confirm);
+            Method ConfirmAction = clase.getMethod("ConfirmAction",String.class,Boolean.class,java.awt.event.ActionEvent.class);
+            ConfirmAction.invoke(c,this.method,confirm,this.Evento);
         } catch (NoSuchMethodException ex) {
             Logger.getLogger(Confirmacion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SecurityException ex) {

@@ -45,11 +45,11 @@ public class Interfaz_Login extends javax.swing.JFrame {
 
         rSPanelShadow1 = new rojeru_san.RSPanelShadow();
         LoginPanel = new javax.swing.JPanel();
-        rSButton1 = new rojeru_san.RSButton();
+        Login = new rojeru_san.RSButton();
         txtUser = new rojeru_san.RSMTextFull();
         txtPassword = new rojeru_san.RSMPassView();
         jLabel1 = new javax.swing.JLabel();
-        rSButton2 = new rojeru_san.RSButton();
+        Close = new rojeru_san.RSButton();
         IconLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,10 +58,10 @@ public class Interfaz_Login extends javax.swing.JFrame {
         LoginPanel.setBackground(new java.awt.Color(255, 255, 255));
         LoginPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(186, 189, 190)));
 
-        rSButton1.setText("Iniciar Sesion");
-        rSButton1.addActionListener(new java.awt.event.ActionListener() {
+        Login.setText("Iniciar Sesion");
+        Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButton1ActionPerformed(evt);
+                LoginActionPerformed(evt);
             }
         });
 
@@ -74,12 +74,12 @@ public class Interfaz_Login extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 112, 192));
         jLabel1.setText("Iniciar Sesion");
 
-        rSButton2.setBackground(new java.awt.Color(213, 0, 0));
-        rSButton2.setText("X");
-        rSButton2.setColorHover(new java.awt.Color(255, 81, 49));
-        rSButton2.addActionListener(new java.awt.event.ActionListener() {
+        Close.setBackground(new java.awt.Color(213, 0, 0));
+        Close.setText("X");
+        Close.setColorHover(new java.awt.Color(255, 81, 49));
+        Close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButton2ActionPerformed(evt);
+                CloseActionPerformed(evt);
             }
         });
 
@@ -100,13 +100,13 @@ public class Interfaz_Login extends javax.swing.JFrame {
                                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(LoginPanelLayout.createSequentialGroup()
                                 .addGap(241, 241, 241)
-                                .addComponent(rSButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 208, Short.MAX_VALUE))
                     .addGroup(LoginPanelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(IconLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(240, 240, 240)
-                        .addComponent(rSButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Close, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPanelLayout.createSequentialGroup()
                 .addComponent(jLabel1)
@@ -118,7 +118,7 @@ public class Interfaz_Login extends javax.swing.JFrame {
                 .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LoginPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(rSButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Close, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE))
                     .addGroup(LoginPanelLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -130,7 +130,7 @@ public class Interfaz_Login extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(rSButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
         );
 
@@ -150,26 +150,27 @@ public class Interfaz_Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rSButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButton2ActionPerformed
+    private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
         // TODO add your handling code here:
         Confirmacion confirm = new Confirmacion();
         confirm.setVisible(true);
         confirm.textMsg.setText("¿Está Seguro de Salir del sistema?");
         confirm.clase = this.getClass();
         confirm.method = "stopAplication";
+        confirm.Evento = evt;
         //System.exit(0); 
-    }//GEN-LAST:event_rSButton2ActionPerformed
+    }//GEN-LAST:event_CloseActionPerformed
 
-    private void rSButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButton1ActionPerformed
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
         MainMenu menu = new MainMenu();
         menu.setVisible(true);
         JComponent comp = (JComponent) evt.getSource();
         Window win = SwingUtilities.getWindowAncestor(comp);
         win.dispose();
-    }//GEN-LAST:event_rSButton1ActionPerformed
+    }//GEN-LAST:event_LoginActionPerformed
     
-    public static void ConfirmAction(String method, Boolean Confirm){
+    public static void ConfirmAction(String method, Boolean Confirm,java.awt.event.ActionEvent evt){
         if (Confirm) {
             if (method == "stopAplication"){
                 System.exit(0); 
@@ -213,11 +214,11 @@ public class Interfaz_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojeru_san.RSButton Close;
     private javax.swing.JLabel IconLogin;
+    private rojeru_san.RSButton Login;
     private javax.swing.JPanel LoginPanel;
     private javax.swing.JLabel jLabel1;
-    private rojeru_san.RSButton rSButton1;
-    private rojeru_san.RSButton rSButton2;
     private rojeru_san.RSPanelShadow rSPanelShadow1;
     private rojeru_san.RSMPassView txtPassword;
     private rojeru_san.RSMTextFull txtUser;
