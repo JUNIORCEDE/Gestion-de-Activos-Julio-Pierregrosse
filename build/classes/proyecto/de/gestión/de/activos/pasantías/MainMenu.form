@@ -159,6 +159,9 @@
               <Color blue="f1" green="ef" red="ec" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CongregacionActionPerformed"/>
+          </Events>
         </Component>
         <Component class="rojeru_san.RSButton" name="Logout">
           <Events>

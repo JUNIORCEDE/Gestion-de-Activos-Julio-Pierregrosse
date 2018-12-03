@@ -127,6 +127,11 @@ public class MenuUnidadE extends javax.swing.JFrame {
         RegistroActivos.setBackground(new java.awt.Color(255, 255, 255));
         RegistroActivos.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(186, 189, 190)));
         RegistroActivos.setColorHover(new java.awt.Color(236, 239, 241));
+        RegistroActivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistroActivosActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -217,7 +222,6 @@ public class MenuUnidadE extends javax.swing.JFrame {
                         .addComponent(RegistroActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -308,7 +312,7 @@ public class MenuUnidadE extends javax.swing.JFrame {
         // TODO add your handling code here:
         Confirmacion confirm = new Confirmacion();
         confirm.setVisible(true);
-        confirm.textMsg.setText("¿Está Seguro de Salir del sistema?");
+        confirm.textMsg.setText("¿Está seguro de salir del sistema?");
         confirm.clase = this.getClass();
         confirm.method = "stopAplication";
         confirm.Evento = evt;
@@ -342,6 +346,17 @@ public class MenuUnidadE extends javax.swing.JFrame {
         confirm.method = "regresar_inicio";
         confirm.Evento = evt;
     }//GEN-LAST:event_InicioActionPerformed
+
+    private void RegistroActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroActivosActionPerformed
+        // TODO add your handling code here:
+        RegistroActivo rA = new RegistroActivo();
+        rA.setVisible(true);
+        rA.Congregacion = false;
+        JComponent comp = (JComponent) evt.getSource();
+        Window win = SwingUtilities.getWindowAncestor(comp);
+        win.dispose();
+        
+    }//GEN-LAST:event_RegistroActivosActionPerformed
     
     public static void ConfirmAction(String method, Boolean Confirm,java.awt.event.ActionEvent evt){
         if (Confirm) {

@@ -78,6 +78,11 @@ public class MainMenu extends javax.swing.JFrame {
         Congregacion.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(186, 189, 190)));
         Congregacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo_Congregacion.JPG"))); // NOI18N
         Congregacion.setColorHover(new java.awt.Color(236, 239, 241));
+        Congregacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CongregacionActionPerformed(evt);
+            }
+        });
 
         Logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +186,15 @@ public class MainMenu extends javax.swing.JFrame {
         Window win = SwingUtilities.getWindowAncestor(comp);
         win.dispose();
     }//GEN-LAST:event_UnidadEActionPerformed
+
+    private void CongregacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CongregacionActionPerformed
+        // TODO add your handling code here:
+        MenuCongregacion menu = new MenuCongregacion();
+        menu.setVisible(true);
+        JComponent comp = (JComponent) evt.getSource();
+        Window win = SwingUtilities.getWindowAncestor(comp);
+        win.dispose();
+    }//GEN-LAST:event_CongregacionActionPerformed
     
     public static void ConfirmAction(String method, Boolean Confirm,java.awt.event.ActionEvent evt){
         if (Confirm) {

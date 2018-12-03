@@ -154,7 +154,7 @@ public class Interfaz_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         Confirmacion confirm = new Confirmacion();
         confirm.setVisible(true);
-        confirm.textMsg.setText("¿Está Seguro de Salir del sistema?");
+        confirm.textMsg.setText("¿Está seguro de salir del sistema?");
         confirm.clase = this.getClass();
         confirm.method = "stopAplication";
         confirm.Evento = evt;
