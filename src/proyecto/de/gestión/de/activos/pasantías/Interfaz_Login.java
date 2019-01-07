@@ -5,14 +5,20 @@
  */
 package proyecto.de.gestión.de.activos.pasantías;
 
+import proyecto.de.gestión.de.activos.pasantías.Database.ConexionPostgresql;
 import com.sun.awt.AWTUtilities;
 import java.awt.Image;
 import java.awt.Window;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
+import proyecto.de.gestión.de.activos.pasantías.Modelos.Usuario;
 
 /**
  *
@@ -32,6 +38,7 @@ public class Interfaz_Login extends javax.swing.JFrame {
         ImageIcon img = new ImageIcon("src/img/userlogin.png");
         Icon icono = new ImageIcon(img.getImage().getScaledInstance(IconLogin.getWidth(), IconLogin.getHeight(), Image.SCALE_DEFAULT));
         IconLogin.setIcon(icono);
+        Cargando.setVisible(false);
     }
 
     /**
@@ -51,6 +58,7 @@ public class Interfaz_Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Close = new rojeru_san.RSButton();
         IconLogin = new javax.swing.JLabel();
+        Cargando = new rojerusan.componentes.RSProgressBarAnimated();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("FrameLogin"); // NOI18N
@@ -100,7 +108,9 @@ public class Interfaz_Login extends javax.swing.JFrame {
                                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(LoginPanelLayout.createSequentialGroup()
                                 .addGap(241, 241, 241)
-                                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Cargando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 208, Short.MAX_VALUE))
                     .addGroup(LoginPanelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -130,7 +140,9 @@ public class Interfaz_Login extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cargando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54))
         );
 
@@ -163,11 +175,75 @@ public class Interfaz_Login extends javax.swing.JFrame {
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
+        
+        Cargando.setVisible(true);
+        Login.setVisible(false);
+        ConexionPostgresql Postgres = new ConexionPostgresql().conectar();
+        FuncionesUtiles utils = new FuncionesUtiles();
+        String nom = txtUser.getText();
+        String passDescript = txtPassword.getText();
+        String pass = utils.Encriptar(passDescript);
+        ResultSet login = Postgres.Consulta("Select * from usuarios where usuario like '"+nom+
+                "' and pass LIKE '"+pass+"'");
+        try {
+            if (utils.CountResultSet(login)>0) {
+                ResultSet rs = Postgres.Consulta("Select * from usuarios where usuario like '"+nom+
+                "' and pass LIKE '"+pass+"'");
+                Usuario user =  null;
+                while(rs.next()){
+                    user = new Usuario(rs.getString("usuario"),rs.getString("tipo"));
+                    break;
+                }
+                if (user != null) {
+                    System.out.println(user.getTipo());
+                    if (user.getTipo().equals("UnidadE")) {
+                        MenuUnidadE menu = new MenuUnidadE();
+                        menu.setVisible(true);
+                        JComponent comp = (JComponent) evt.getSource();
+                        Window win = SwingUtilities.getWindowAncestor(comp);
+                        win.dispose();
+                        Cargando.setVisible(false);
+                        Login.setVisible(true);
+                    }
+                    else{
+                        if (user.getTipo().equals("Congregacion")) {
+                            MenuCongregacion menu = new MenuCongregacion();
+                            menu.setVisible(true);
+                            JComponent comp = (JComponent) evt.getSource();
+                            Window win = SwingUtilities.getWindowAncestor(comp);
+                            win.dispose();
+                            Cargando.setVisible(false);
+                            Login.setVisible(true);
+                        }
+                        else{
+                            Cargando.setVisible(false);
+                            Login.setVisible(true);
+                        }
+                    }
+                }
+                else{
+                    System.out.println("Datos incorrectos");
+                    Cargando.setVisible(false);
+                    Login.setVisible(true);
+                }
+            }
+            else {
+                //JOptionPane.showMessageDialog(null, "Datos incorrectos\nVerifique e intente nuevamente.");
+                System.out.println("Datos incorrectos");
+                Cargando.setVisible(false);
+                Login.setVisible(true);
+            }
+         } catch (SQLException ex) {
+            Logger.getLogger(Interfaz_Login.class.getName()).log(Level.SEVERE, null, ex);
+            Cargando.setVisible(false);
+            Login.setVisible(true);
+         }
+        /*
         MainMenu menu = new MainMenu();
         menu.setVisible(true);
         JComponent comp = (JComponent) evt.getSource();
         Window win = SwingUtilities.getWindowAncestor(comp);
-        win.dispose();
+        win.dispose();*/
     }//GEN-LAST:event_LoginActionPerformed
     
     public static void ConfirmAction(String method, Boolean Confirm,java.awt.event.ActionEvent evt){
@@ -181,7 +257,7 @@ public class Interfaz_Login extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -214,6 +290,7 @@ public class Interfaz_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojerusan.componentes.RSProgressBarAnimated Cargando;
     private rojeru_san.RSButton Close;
     private javax.swing.JLabel IconLogin;
     private rojeru_san.RSButton Login;

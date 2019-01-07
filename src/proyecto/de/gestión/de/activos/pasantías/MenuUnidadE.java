@@ -46,11 +46,11 @@ public class MenuUnidadE extends javax.swing.JFrame {
         Icon icono6 = new ImageIcon(img6.getImage().getScaledInstance(ReportesActivos.getWidth(), ReportesActivos.getHeight(), Image.SCALE_DEFAULT));
         ReportesActivos.setIcon(icono6);
         
-        
+        /*
         ImageIcon img7 = new ImageIcon("src/img/home.png");
         Icon icono7 = new ImageIcon(img7.getImage().getScaledInstance(Inicio.getWidth(), Inicio.getHeight(), Image.SCALE_DEFAULT));
         Inicio.setIcon(icono7);
-        
+        */
         ImageIcon img8 = new ImageIcon("src/img/logout.png");
         Icon icono8 = new ImageIcon(img8.getImage().getScaledInstance(Logout.getWidth(), Logout.getHeight(), Image.SCALE_DEFAULT));
         Logout.setIcon(icono8);
@@ -79,9 +79,7 @@ public class MenuUnidadE extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         ReportesActivos = new rojeru_san.RSButton();
         jLabel7 = new javax.swing.JLabel();
-        Inicio = new rojeru_san.RSButton();
         Logout = new rojeru_san.RSButton();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -166,21 +164,11 @@ public class MenuUnidadE extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Reportes de Activos");
 
-        Inicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InicioActionPerformed(evt);
-            }
-        });
-
         Logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LogoutActionPerformed(evt);
             }
         });
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("INICIO");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -199,7 +187,9 @@ public class MenuUnidadE extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(120, 120, 120)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -235,17 +225,8 @@ public class MenuUnidadE extends javax.swing.JFrame {
                 .addComponent(ReportesActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(256, 256, 256)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                    .addComponent(Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(314, 314, 314)
+                .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -277,15 +258,11 @@ public class MenuUnidadE extends javax.swing.JFrame {
                         .addComponent(SalidaActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -336,16 +313,6 @@ public class MenuUnidadE extends javax.swing.JFrame {
         confirm.method = "Logout";
         confirm.Evento = evt;
     }//GEN-LAST:event_LogoutActionPerformed
-
-    private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        // TODO add your handling code here:
-        Confirmacion confirm = new Confirmacion();
-        confirm.setVisible(true);
-        confirm.textMsg.setText("¿Está seguro de regresar al menú principal ?");
-        confirm.clase = this.getClass();
-        confirm.method = "regresar_inicio";
-        confirm.Evento = evt;
-    }//GEN-LAST:event_InicioActionPerformed
 
     private void RegistroActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroActivosActionPerformed
         // TODO add your handling code here:
@@ -421,7 +388,6 @@ public class MenuUnidadE extends javax.swing.JFrame {
     private rojeru_san.RSButton Close;
     private rojeru_san.RSButton GestionDepartamentos;
     private rojeru_san.RSButton GestionPersonal;
-    private rojeru_san.RSButton Inicio;
     private rojeru_san.RSButton Logout;
     private rojeru_san.RSButton RegistroActivos;
     private rojeru_san.RSButton ReportesActivos;
@@ -432,7 +398,6 @@ public class MenuUnidadE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
